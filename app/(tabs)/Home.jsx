@@ -1,84 +1,91 @@
-import { StyleSheet, Text, View, TextInput, Image, ScrollView } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, TextInput, Image, FlatList } from 'react-native';
+import React from 'react';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
+import { Link } from 'expo-router';
+
+const shoeData = [
+  {
+    id: '1',
+    name: 'Shoe 1',
+    price: '$99',
+    details: 'Comfortable running shoes',
+    imageUrl: '../../assets/product/pic1.png',
+  },
+  {
+    id: '2',
+    name: 'Shoe 2',
+    price: '$120',
+    details: 'Stylish casual shoes',
+    imageUrl: '../../assets/product/pic2.png',
+  },
+  {
+    id: '3',
+    name: 'Shoe 3',
+    price: '$89',
+    details: 'High-performance shoes',
+    imageUrl: '../../assets/product/pic3.png',
+  },
+  {
+    id: '4',
+    name: 'Shoe 4',
+    price: '$140',
+    details: 'Elegant sports shoes',
+    imageUrl: '../../assets/product/pic4.png',
+  },
+];
 
 const Index = () => {
+  const renderShoeCard = ({ item }) => (
+    <View style={styles.card}>
+      <Image source={{ uri: item.imageUrl }} style={styles.shoeImage} />
+      <Text style={styles.cardText}>{item.name}</Text>
+      <Text style={styles.price}>{item.price}</Text>
+      <Text style={styles.details}>{item.details}</Text>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       {/* Header section */}
       <View style={styles.header}>
-        {/* Logo on the left */}
         <View style={styles.logoContainer}>
           <Text style={styles.logoText}>Sport Shoes</Text>
         </View>
-
-        {/* Icons on the right */}
         <View style={styles.iconsContainer}>
-          <AntDesign name="hearto" size={24} color="black" />
+         <Link href={'/wishlist'}> <AntDesign name="hearto" size={24} color="black" /></Link>
           <AntDesign name="shoppingcart" size={24} color="black" />
           <Feather name="bell" size={24} color="black" />
         </View>
       </View>
 
-      {/* Wrap content in ScrollView to enable scrolling */}
-        {/* Search Box */}
-        <View style={styles.searchBar}>
-          <TextInput
-            style={styles.searchBox}
-            placeholder="Search for shoes"
-            />
-          <View style={styles.searchIcon}>
-            <AntDesign name="search1" size={24} color="white" />
-          </View>
+      {/* Search Box */}
+      <View style={styles.searchBar}>
+        <TextInput
+          style={styles.searchBox}
+          placeholder="Search for shoes"
+        />
+        <View style={styles.searchIcon}>
+          <AntDesign name="search1" size={24} color="white" />
         </View>
-
-            <ScrollView>
-        {/* Shoe Cards */}
-        <View style={styles.cardsContainer}>
-          <View style={styles.card}>
-            <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 1</Text>
-            <Text style={styles.price}>$99</Text>
-            <Text style={styles.details}>Comfortable running shoes</Text>
-          </View>
-          <View style={styles.card}>
-            <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 2</Text>
-            <Text style={styles.price}>$120</Text>
-            <Text style={styles.details}>Stylish casual shoes</Text>
-          </View>
-          <View style={styles.card}>
-            <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 3</Text>
-            <Text style={styles.price}>$89</Text>
-            <Text style={styles.details}>High-performance shoes</Text>
-          </View>
-          <View style={styles.card}>
-            <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 4</Text>
-            <Text style={styles.details}>Elegant sports shoes</Text>
-            <Text style={styles.price}>$140</Text>
-          </View>
-        </View>
-      </ScrollView>
+      </View>
+     <View style={styles.banners}>
+        <Image source={{ uri: '../../assets/product/banner.png' }} style={styles.banner1} />
+     </View>
+      {/* FlatList to display shoe cards */}
+      <FlatList
+        data={shoeData}
+        renderItem={renderShoeCard}
+        keyExtractor={item => item.id}
+        numColumns={2}
+        columnWrapperStyle={{ justifyContent: 'space-between' }}
+        contentContainerStyle={styles.cardsContainer}
+      />
     </View>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
 
 const styles = StyleSheet.create({
   container: {
@@ -124,11 +131,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  banner1:{
+    width:'85%',
+    marginVertical:15,
+    height:100,
+    borderRadius:'20px'
+  },
   cardsContainer: {
     marginTop: 20,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
   },
   card: {
     backgroundColor: '#fff',
@@ -153,7 +163,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   price: {
-    color: 'green',
+    color: 'orange',
     fontWeight: 'bold',
     fontSize: 16,
     marginTop: 5,

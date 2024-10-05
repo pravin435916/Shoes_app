@@ -21,29 +21,29 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="wishlist"
         options={{
-          tabBarLabel: "Explore",
+          tabBarLabel: "wishlist",
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="travel-explore" size={24} color={color} />
           ),
         }}
       />
+        <Tabs.Screen
+          name="notify"
+          options={{
+            tabBarLabel: "notify",
+            tabBarIcon: ({ color }) => (
+              <Entypo name="back-in-time" size={24} color={color} />
+            ),
+          }}
+        />
       <Tabs.Screen
         name="profile"
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color }) => (
             <AntDesign name="user" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="planner"
-        options={{
-          tabBarLabel: "Planner",
-          tabBarIcon: ({ color }) => (
-            <Entypo name="back-in-time" size={24} color={color} />
           ),
         }}
       />

@@ -29,7 +29,7 @@ const Index = () => {
         <View style={styles.cardsContainer}>
           <View style={styles.card}>
             <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
+              source={{ uri:'../../assets/product/pic4.png', }}
               style={styles.shoeImage}
             />
             <Text style={styles.cardText}>Shoe 1</Text>
@@ -38,7 +38,7 @@ const Index = () => {
           </View>
           <View style={styles.card}>
             <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
+              source={{ uri: '../../assets/product/pic1.png', }}
               style={styles.shoeImage}
             />
             <Text style={styles.cardText}>Shoe 2</Text>
@@ -47,7 +47,7 @@ const Index = () => {
           </View>
           <View style={styles.card}>
             <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
+              source={{ uri: '../../assets/product/pic2.png', }}
               style={styles.shoeImage}
             />
             <Text style={styles.cardText}>Shoe 3</Text>
@@ -56,7 +56,7 @@ const Index = () => {
           </View>
           <View style={styles.card}>
             <Image
-              source={{ uri: 'https://t3.ftcdn.net/jpg/06/12/00/18/360_F_612001823_TkzT0xmIgagoDCyQ0yuJYEGu8j6VNVYT.jpg' }}
+              source={{ uri: '../../assets/product/pic3.png', }}
               style={styles.shoeImage}
             />
             <Text style={styles.cardText}>Shoe 4</Text>
