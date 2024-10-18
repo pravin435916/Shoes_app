@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { Tabs } from "expo-router"; // Assuming you're using expo-router
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import Feather from '@expo/vector-icons/Feather';
+import { UserContext } from "../context/UserContext";
 const TabLayout = () => {
+  const { user, logout } = useContext(UserContext);
   return (
     <Tabs screenOptions={{
       headerShown: false,
@@ -38,15 +40,17 @@ const TabLayout = () => {
             ),
           }}
         />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          tabBarLabel: "Profile",
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="user" size={24} color={color} />
-          ),
-        }}
-      />
+          {user && user.isLoggedIn &&
+            <Tabs.Screen
+              name="profile"
+              options={{
+                tabBarLabel: "Profile",
+                tabBarIcon: ({ color }) => (
+                  <AntDesign name="user" size={24} color={color} />
+                ),
+              }}
+            />
+          }
     </Tabs>
   );
 };
