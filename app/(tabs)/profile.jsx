@@ -1,8 +1,9 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { React, useContext } from "react";
+import { View, Text, Image, TouchableOpacity, ScrollView, Button } from 'react-native';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
-
+import {UserContext} from '../context/UserContext'
 const profile = () => {
+  const { user, logout } = useContext(UserContext);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Profile Header */}
@@ -11,8 +12,8 @@ const profile = () => {
           source={{ uri: 'https://media.licdn.com/dms/image/v2/D5603AQGwb2f1ONSERg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725645542157?e=1733356800&v=beta&t=UD9Z__PTaGmL2u5Pbd8xnRecG6hyFIz4MvVWpwFGGoM' }}
           style={styles.profileImage}
         />
-        <Text style={styles.username}>Pravin Nandankar</Text>
-        <Text style={styles.email}>pravin@gmail.com</Text>
+        <Text style={styles.username}>{user ? `Name: ${user.name}` : 'NA'}</Text>
+        <Text style={styles.email}>{user ? `Email: ${user.email}` : 'NA'}</Text>
       </View>
 
       {/* Profile Options */}
@@ -37,11 +38,16 @@ const profile = () => {
           title="Settings"
           onPress={() => {}}
         />
+          {user && user.isLoggedIn ? (
         <ProfileOption
           icon={<FontAwesome name="sign-out" size={24} color="orange" />}
           title="Log Out"
-          onPress={() => {}}
+          onPress={logout}
         />
+        // <Button title="Logout" onPress={logout} />
+      ) : (
+        <Text>You are not logged in.</Text>
+      )}
       </View>
     </ScrollView>
   );
