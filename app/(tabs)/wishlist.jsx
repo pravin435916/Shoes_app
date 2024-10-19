@@ -3,69 +3,73 @@ import React from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import { Link } from 'expo-router';
+import ShoppingCart from '../components/ShoppingCart';
 
 const Index = () => {
   return (
-    <View style={styles.container}>
-      {/* Header section */}
-      <View style={styles.header}>
-        {/* Logo on the left */}
-        <View style={styles.logoContainer}>
-        <Link href={'/Home'}><Text> - </Text></Link> 
-          <Text style={styles.logoText}>Wishlist</Text>
+    <>
+      <View style={styles.container}>
+        {/* Header section */}
+        <View style={styles.header}>
+          {/* Logo on the left */}
+          <View style={styles.logoContainer}>
+            <Link href={'/Home'}><Text> - </Text></Link>
+            <Text style={styles.logoText}>Wishlist</Text>
+          </View>
+
+          {/* Icons on the right */}
+          <View style={styles.iconsContainer}>
+            <AntDesign name="shoppingcart" size={24} color="black" />
+            <Feather name="bell" size={24} color="black" />
+          </View>
         </View>
 
-        {/* Icons on the right */}
-        <View style={styles.iconsContainer}>
-          <AntDesign name="shoppingcart" size={24} color="black" />
-          <Feather name="bell" size={24} color="black" />
-        </View>
+        {/* Wrap content in ScrollView to enable scrolling */}
+
+        <ScrollView>
+          {/* Shoe Cards */}
+          <View style={styles.cardsContainer}>
+            <View style={styles.card}>
+              <Image
+                source={{ uri: '../../assets/product/pic4.png', }}
+                style={styles.shoeImage}
+              />
+              <Text style={styles.cardText}>Shoe 1</Text>
+              <Text style={styles.price}>$99</Text>
+              <Text style={styles.details}>Comfortable running shoes</Text>
+            </View>
+            <View style={styles.card}>
+              <Image
+                source={{ uri: '../../assets/product/pic1.png', }}
+                style={styles.shoeImage}
+              />
+              <Text style={styles.cardText}>Shoe 2</Text>
+              <Text style={styles.price}>$120</Text>
+              <Text style={styles.details}>Stylish casual shoes</Text>
+            </View>
+            <View style={styles.card}>
+              <Image
+                source={{ uri: '../../assets/product/pic2.png', }}
+                style={styles.shoeImage}
+              />
+              <Text style={styles.cardText}>Shoe 3</Text>
+              <Text style={styles.price}>$89</Text>
+              <Text style={styles.details}>High-performance shoes</Text>
+            </View>
+            <View style={styles.card}>
+              <Image
+                source={{ uri: '../../assets/product/pic3.png', }}
+                style={styles.shoeImage}
+              />
+              <Text style={styles.cardText}>Shoe 4</Text>
+              <Text style={styles.details}>Elegant sports shoes</Text>
+              <Text style={styles.price}>$140</Text>
+            </View>
+          </View>
+        </ScrollView>
       </View>
-
-      {/* Wrap content in ScrollView to enable scrolling */}
-
-            <ScrollView>
-        {/* Shoe Cards */}
-        <View style={styles.cardsContainer}>
-          <View style={styles.card}>
-            <Image
-              source={{ uri:'../../assets/product/pic4.png', }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 1</Text>
-            <Text style={styles.price}>$99</Text>
-            <Text style={styles.details}>Comfortable running shoes</Text>
-          </View>
-          <View style={styles.card}>
-            <Image
-              source={{ uri: '../../assets/product/pic1.png', }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 2</Text>
-            <Text style={styles.price}>$120</Text>
-            <Text style={styles.details}>Stylish casual shoes</Text>
-          </View>
-          <View style={styles.card}>
-            <Image
-              source={{ uri: '../../assets/product/pic2.png', }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 3</Text>
-            <Text style={styles.price}>$89</Text>
-            <Text style={styles.details}>High-performance shoes</Text>
-          </View>
-          <View style={styles.card}>
-            <Image
-              source={{ uri: '../../assets/product/pic3.png', }}
-              style={styles.shoeImage}
-            />
-            <Text style={styles.cardText}>Shoe 4</Text>
-            <Text style={styles.details}>Elegant sports shoes</Text>
-            <Text style={styles.price}>$140</Text>
-          </View>
-        </View>
-      </ScrollView>
-    </View>
+      <ShoppingCart/>
+    </>
   )
 }
 

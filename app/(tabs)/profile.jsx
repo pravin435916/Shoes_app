@@ -2,6 +2,7 @@ import { React, useContext } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView, Button } from 'react-native';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import {UserContext} from '../context/UserContext'
+import Counter from "../components/Counter";
 const profile = () => {
   const { user, logout } = useContext(UserContext);
   return (
@@ -49,6 +50,7 @@ const profile = () => {
         <Text>You are not logged in.</Text>
       )}
       </View>
+      <Counter/>
     </ScrollView>
   );
 };
